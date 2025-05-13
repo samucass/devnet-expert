@@ -1,0 +1,23 @@
+---
+- name: Gather facts and configure SNMP
+  hosts: routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+  - name: Gather IOS facts
+    ios_facts:
+      gather_subset: all
+  
+  - name: Display the device hostname and sofware version
+    debug:
+      msg: "The hostname is {{ ansible_net_hostname }} and the OS version is {{ ansible_net_version }}"
+
+  - name: Configure SNMP settings
+    ios_config:
+      lines:
+        - snmp-server location LAB-SAM
+
+  - name: Save running config to startup config
+    ios_config:
+      save_when: always

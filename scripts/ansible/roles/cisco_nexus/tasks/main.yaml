@@ -1,0 +1,6 @@
+---
+- name: Configure logging hosts
+  nxos_config:
+    lines:
+      - logging server 10.1.1.1
+      - logging event link-status default
