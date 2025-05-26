@@ -1,0 +1,5 @@
+Host 192.168.1.52
+    HostName 192.168.1.52
+    User admin
+    HostKeyAlgorithms +ssh-rsa
+    KexAlgorithms +diffie-hellman-group14-sha1
